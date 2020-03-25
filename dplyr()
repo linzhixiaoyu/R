@@ -1,0 +1,17 @@
+install.packages("dplyr")
+library(dplyr)
+
+#Change data into tibble format
+tibble(data)
+
+
+#Use %>% to apply group_by, filter, top_n, summarise functions to data
+#Find top 10 records according to Deaths data
+data %>%
+  top_n(10,Deaths)%>%
+  arrange(desc(Deaths))
+#Find the country that has the largest number of deaths  
+data %>%
+  filter(Deaths>100) %>%
+  group_by(Country) %>%
+  summarise(max(Deaths))
